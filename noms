@@ -20,6 +20,7 @@ from BeautifulSoup import BeautifulSoup
 import urllib2
 import re
 from datetime import datetime as dt
+import HTMLParser
 
 # return the correct suffix for a date
 def suffix(d):
@@ -29,26 +30,37 @@ def suffix(d):
 def custom_strftime(format, t):
     return t.strftime(format).replace('{S}', str(t.day) + suffix(t.day))
 
+# todays date
 now = dt.now()
 
+# grab the listings page
 page = urllib2.urlopen('http://www.kerbfood.com/kings-cross/')
 soup = BeautifulSoup(page)
 
+# find the listings panel
 kerb = soup.find('div', 'rota_panel')
 kerbList = kerb.find('ul')
 
-for day in kerbList.findAll('li', recursive=False, limit=5):
+# how many days left in the week
+week = {'Mon': 5, 'Tue': 4, 'Wed': 3, 'Thu': 2, 'Fri': 1}
+left = 5
+for key, val in dict.items(week):
+    if key == now.strftime('%a'):
+    	left = val
+
+# iterate over the remaining days of the week to find traders
+for day in kerbList.findAll('li', recursive=False, limit=left):
 	date = re.sub('^date-', '', day['id'])
 	date = dt.strptime(date, '%Y-%m-%d')
-	if date.strftime('%a') != 'Sat' and date.strftime('%a') != 'Sun':
-		traders = custom_strftime('%a {S}', date) + ": "
-		first = True
-		for stall in day.findAll('li'):
-			heading = stall.find('h4')
-			name = re.sub('&Amp;', '&', heading.find('a').string.title())
-			if first:
-				traders = traders + name
-				first = False
-			else:
-				traders = traders + ", " + name
-		print traders
+	traders = custom_strftime('%a {S}', date) + ": "
+	first = True
+	for stall in day.findAll('li'):
+		heading = stall.find('h4')
+		h = HTMLParser.HTMLParser()
+		name = h.unescape(heading.find('a').string)
+		if first:
+			traders = traders + name.title()
+			first = False
+		else:
+			traders = traders + ", " + name.title()
+	print traders
