@@ -1,25 +1,20 @@
-eat-street noms
+kerb noms
 ==========
-eat-street noms prints out the names of the food stalls appearing today at [King's Cross Eat Street](http://www.eat.st/).
+kerb noms prints out the names of the food stalls appearing today at [Kerb King's](http://www.kerbfood.com/kings-cross/).
 	
 	
 How it works
 ------------
-It's a Python script that simply grabs the [Eat Street listings page](http://www.eat.st/kings-cross/) using urllib2, uses BeautifulSoup to scrape the relevant data, and spits back the names of the stalls.
+It's a Python script that simply grabs the [Kerb listings](http://www.kerbfood.com/kings-cross/) using urllib2, uses BeautifulSoup to scrape the relevant data, and spits back the names of the stalls.
 
-It's fairly nasty source HTML, resulting in fairly nasty BeautifulSoup code. The info on Eat Street stalls is contained inside multiple div.altText. Each day is headed by a div.blue-heading and there is an hr inbetween all of these divs. There's no container around each day! Gah. There's almost undoubtedly a nicer way to do it, but I haven't found it (and, tbh, I haven't looked very hard ;)
-
-The script only displays the info between 9am and 2pm cause I'm not interested in seeing it at other times (I'm not thinking about hotdogs at 7 in the morning, and the stalls shut at 2:30pm).
-
-&lt;cough /&gt;
-That's a total lie about me not thinking about hotdogs at 7 in the morning.
+It will show you the stalls on each day for the rest of the week you are currently in. So on Monday you will see 5 days worth, and on Friday on 1 day.
 	
 	
 How does it look
 ----------------
 Like this:
 
-![the output of noms](https://github.com/downloads/dotcode/eat-street/noms.png)
+![the output of noms](https://github.com/downloads/howlingmad/kerb/noms.png)
 	
 Simple, huh?
 
@@ -35,13 +30,13 @@ Python, and it's reliant upon [BeautifulSoup](http://www.crummy.com/software/Bea
 
 (That's obviously the thing to do for the other modules as well, should they be missing)
 
-Should you wish to display the information on your desktop, like me, then (on OS X) you'll be wanting to grab the fantastic [GeekTool](http://projects.tynsoe.org/en/geektool/). Grab it even if you couldn't care less about Eat Street. GeekTool is *brilliant*!
+Should you wish to display the information on your desktop, like me, then (on OS X) you'll be wanting to grab the fantastic [GeekTool](http://projects.tynsoe.org/en/geektool/). Grab it even if you couldn't care less about Kerb. GeekTool is *brilliant*!
 	
 	
 Installation
 ------------
 	$ mkdir -p ~/bin
-	$ curl -skL https://github.com/dotcode/eat-street/raw/master/noms >~/bin/noms
+	$ curl -skL https://github.com/howlingmad/kerb/raw/master/noms >~/bin/noms
 	$ chmod +x ~/bin/noms
 	
 Make sure `~/bin` is in your `$PATH` - or put the `noms` script somewhere else on your `$PATH`.
@@ -56,6 +51,5 @@ I trigger the command using [GeekTool](http://projects.tynsoe.org/en/geektool/) 
 	
 Author
 ------
-Jude Robinson
--- dotcode at gmail dot com
--- @dotcode
+Alex Kilgour
+-- @howlingmad
