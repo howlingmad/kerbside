@@ -28,7 +28,9 @@ Python, and it's reliant upon [BeautifulSoup](http://www.crummy.com/software/Bea
 
 	$ easy_install BeautifulSoup
 
-(That's obviously the thing to do for the other modules as well, should they be missing. You may also need to use 'sudo' if it won't install)
+**You may need to use 'sudo' if it won't install**
+
+(That's obviously the thing to do for the other modules as well, should they be missing.)
 
 Should you wish to display the information on your desktop, like me, then (on OS X) you'll be wanting to grab the fantastic [GeekTool](http://projects.tynsoe.org/en/geektool/). Grab it even if you couldn't care less about Kerb. GeekTool is *brilliant*!
 	
