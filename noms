@@ -19,32 +19,36 @@
 from BeautifulSoup import BeautifulSoup
 import urllib2
 import re
-import datetime
+from datetime import datetime as dt
 
-now = datetime.datetime.now()
+# return the correct suffix for a date
+def suffix(d):
+    return 'th' if 11<=d<=13 else {1:'st',2:'nd',3:'rd'}.get(d%10, 'th')
 
-# only run if between 9am and 2pm
-if now.strftime('%H') >= '09' and now.strftime('%H') < '14':
+# format a given date by adding the suffix
+def custom_strftime(format, t):
+    return t.strftime(format).replace('{S}', str(t.day) + suffix(t.day))
 
-	page = urllib2.urlopen('http://eat.st/kings-cross/')
+now = dt.now()
 
-	soup = BeautifulSoup(page)
+page = urllib2.urlopen('http://www.kerbfood.com/kings-cross/')
+soup = BeautifulSoup(page)
 
-	# find the first date block (which is always the next eat st occurrence)
-	# The date is held inside a div.heading-blue
-	firstDateHeading = soup.find('div', 'heading-blue')
-	date = re.sub('^[^0-9]+', '', firstDateHeading.contents[0].string)
-	day = re.search('^[0-9]+', date)
-	# add a leading zero for days 1-9
-	daynum = day.group(0)
-	if len(daynum) == 1: 
-		daynum = '0' + daynum
-	monthYear = re.search('[a-zA-Z]+ [0-9]+$', date)
-	firstDate = daynum + ' ' + monthYear.group(0)
+kerb = soup.find('div', 'rota_panel')
+kerbList = kerb.find('ul')
 
-	# see if that first date matches today's date
-	if now.strftime('%d %b %Y') == firstDate:
-		for item in firstDateHeading.findNextSiblings('div'):
-			if item['class'] != 'altText':
-				break
-			print item.find('h3').find('a').string
+for day in kerbList.findAll('li', recursive=False, limit=5):
+	date = re.sub('^date-', '', day['id'])
+	date = dt.strptime(date, '%Y-%m-%d')
+	if date.strftime('%a') != 'Sat' and date.strftime('%a') != 'Sun':
+		traders = custom_strftime('%a {S}', date) + " :: "
+		first = True
+		for stall in day.findAll('li'):
+			heading = stall.find('h4')
+			name = re.sub('&Amp;', '&', heading.find('a').string.title())
+			if first:
+				traders = traders + name
+				first = False
+			else:
+				traders = traders + ", " + name
+		print traders
