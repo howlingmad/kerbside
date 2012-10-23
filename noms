@@ -41,7 +41,7 @@ for day in kerbList.findAll('li', recursive=False, limit=5):
 	date = re.sub('^date-', '', day['id'])
 	date = dt.strptime(date, '%Y-%m-%d')
 	if date.strftime('%a') != 'Sat' and date.strftime('%a') != 'Sun':
-		traders = custom_strftime('%a {S}', date) + " :: "
+		traders = custom_strftime('%a {S}', date) + ": "
 		first = True
 		for stall in day.findAll('li'):
 			heading = stall.find('h4')
