@@ -1,6 +1,6 @@
-kerb noms
+kerb
 ==========
-kerb noms prints out the names of the food stalls appearing today at [Kerb King's](http://www.kerbfood.com/kings-cross/).
+kerb prints out the names of the food stalls appearing today at [Kerb King's](http://www.kerbfood.com/kings-cross/).
 	
 	
 How it works
@@ -14,7 +14,7 @@ How does it look
 ----------------
 Like this:
 
-![the output of noms](https://github.com/downloads/howlingmad/kerb/noms.png)
+![the output of kerb](https://github.com/downloads/howlingmad/kerb/noms.png)
 	
 Simple, huh?
 
