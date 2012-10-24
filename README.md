@@ -64,6 +64,6 @@ I trigger the command using [GeekTool](http://projects.tynsoe.org/en/geektool/) 
 	
 Author
 ------
-Alex Kilgour
+Alex Kilgour   
 -- http://kil.gr   
 -- @howlingmad
