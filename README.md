@@ -52,9 +52,11 @@ Make sure `~/bin` is in your `$PATH` - or put the `noms` script somewhere else o
 Usage
 -----
 By default you will see the traders for the current day.
+
 	$ noms
 
 By adding an argument of 'true' you will see the stalls on each day for the rest of the current week.
+
 	$ noms true
 	
 I trigger the command using [GeekTool](http://projects.tynsoe.org/en/geektool/) so that I have the info displaying on my desktop. It's nice like that.
