@@ -7,16 +7,21 @@ How it works
 ------------
 It's a Python script that simply grabs the [Kerb listings](http://www.kerbfood.com/kings-cross/) using urllib2, uses BeautifulSoup to scrape the relevant data, and spits back the names of the stalls.
 
-It will show you the stalls on each day for the rest of the week you are currently in. So on Monday you will see 5 days worth, and on Friday on 1 day.
+Will show you either today's listings, or listings for the rest of the week
 	
 	
 How does it look
 ----------------
 Like this:
 
+![the output of kerb](https://github.com/downloads/howlingmad/kerb/nom.png)
+
+Or like this:
+
 ![the output of kerb](https://github.com/downloads/howlingmad/kerb/noms.png)
 	
 Simple, huh?
+
 
 Requirements
 ------------
@@ -46,7 +51,11 @@ Make sure `~/bin` is in your `$PATH` - or put the `noms` script somewhere else o
 	
 Usage
 -----
+By default you will see the traders for the current day.
 	$ noms
+
+By adding an argument of 'true' you will see the stalls on each day for the rest of the current week.
+	$ noms true
 	
 I trigger the command using [GeekTool](http://projects.tynsoe.org/en/geektool/) so that I have the info displaying on my desktop. It's nice like that.
 	
@@ -54,4 +63,5 @@ I trigger the command using [GeekTool](http://projects.tynsoe.org/en/geektool/) 
 Author
 ------
 Alex Kilgour
+-- http://kil.gr
 -- @howlingmad

@@ -21,6 +21,10 @@ import urllib2
 import re
 from datetime import datetime as dt
 import HTMLParser
+import sys
+
+# defaults to showing only todays traders
+result = False
 
 # return the correct suffix for a date
 def suffix(d):
@@ -30,37 +34,49 @@ def suffix(d):
 def custom_strftime(format, t):
     return t.strftime(format).replace('{S}', str(t.day) + suffix(t.day))
 
-# todays date
-now = dt.now()
+# run if the arguments are correct
+if (len(sys.argv[1:]) < 2):
 
-# grab the listings page
-page = urllib2.urlopen('http://www.kerbfood.com/kings-cross/')
-soup = BeautifulSoup(page)
+	# if run with true, then show traders for the rest of the week
+	if (len(sys.argv[1:]) == 1 and sys.argv[1].lower() == 'true'):
+		result = True
 
-# find the listings panel
-kerb = soup.find('div', 'rota_panel')
-kerbList = kerb.find('ul')
+	# todays date
+	now = dt.now()
 
-# how many days left in the week
-week = {'Mon': 5, 'Tue': 4, 'Wed': 3, 'Thu': 2, 'Fri': 1}
-left = 5
-for key, val in dict.items(week):
-    if key == now.strftime('%a'):
-    	left = val
+	# grab the listings page
+	page = urllib2.urlopen('http://www.kerbfood.com/kings-cross/')
+	soup = BeautifulSoup(page)
 
-# iterate over the remaining days of the week to find traders
-for day in kerbList.findAll('li', recursive=False, limit=left):
-	date = re.sub('^date-', '', day['id'])
-	date = dt.strptime(date, '%Y-%m-%d')
-	traders = custom_strftime('%a {S}', date) + ": "
-	first = True
-	for stall in day.findAll('li'):
-		heading = stall.find('h4')
-		h = HTMLParser.HTMLParser()
-		name = h.unescape(heading.find('a').string)
-		if first:
-			traders = traders + name.title()
-			first = False
-		else:
-			traders = traders + ", " + name.title()
-	print traders
+	# find the listings panel
+	kerb = soup.find('div', 'rota_panel')
+	kerbList = kerb.find('ul')
+
+	# how many days left in the week
+	week = {'Mon': 5, 'Tue': 4, 'Wed': 3, 'Thu': 2, 'Fri': 1}
+	left = 1
+	if result:
+		for key, val in dict.items(week):
+		    if key == now.strftime('%a'):
+		    	left = val
+
+	# iterate over the remaining days of the week to find traders
+	for day in kerbList.findAll('li', recursive=False, limit=left):
+		date = re.sub('^date-', '', day['id'])
+		date = dt.strptime(date, '%Y-%m-%d')
+		traders = custom_strftime('%a {S}', date) + ": "
+		first = True
+		for stall in day.findAll('li'):
+			heading = stall.find('h4')
+			h = HTMLParser.HTMLParser()
+			name = h.unescape(heading.find('a').string)
+			if first:
+				traders = traders + name.title()
+				first = False
+			else:
+				traders = traders + ", " + name.title()
+		print traders
+
+else:
+	# invalid argument use
+    print "Invalid arguments. This only takes one argument. Run as 'noms true' to show traders for the rest of the week."
