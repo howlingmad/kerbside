@@ -1,6 +1,6 @@
-kerb
+kerbside
 ==========
-kerb prints out the names of the food stalls appearing today at [Kerb King's Cross](http://www.kerbfood.com/kings-cross/).
+kerbside prints out the names of the food stalls appearing today at [Kerb King's Cross](http://www.kerbfood.com/kings-cross/).
 	
 	
 How it works
