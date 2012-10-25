@@ -14,11 +14,11 @@ How does it look
 ----------------
 Like this:
 
-![the output of kerb](https://github.com/downloads/howlingmad/kerb/nom.png)
+![the output of kerb](https://github.com/downloads/howlingmad/kerbside/nom.png)
 
 Or like this:
 
-![the output of kerb](https://github.com/downloads/howlingmad/kerb/noms.png)
+![the output of kerb](https://github.com/downloads/howlingmad/kerbside/noms.png)
 	
 Simple, huh?
 
