@@ -61,9 +61,14 @@ if (len(sys.argv[1:]) < 2):
 		    	left = val
 
 	# iterate over the remaining days of the week to find traders
+	first = True
 	for day in kerbList.findAll('li', recursive=False, limit=left):
 		date = re.sub('^date-', '', day['id'])
 		date = dt.strptime(date, '%Y-%m-%d')
+		if first:
+			if custom_strftime('%Y-%m-%d', now) != custom_strftime('%Y-%m-%d', date):
+				sys.exit()
+			first = False
 		traders = ""
 		if result:
 			traders = custom_strftime('%a {S}', date) + ": "
