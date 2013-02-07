@@ -55,11 +55,15 @@ By default you will see the traders for the current day.
 
 	$ noms
 
-By adding an argument of 'true' you will see the stalls on each day for the rest of the current week.
+By adding an argument of '1' you will see the stalls on each day for the rest of the current week.
 
-	$ noms true
+	$ noms 1
+
+!NEW! If you add the argument '2' then there will be no CLI output, but will instead write the data to json format.
+
+	$ noms 2
 	
-I trigger the command using [GeekTool](http://projects.tynsoe.org/en/geektool/) so that I have the info displaying on my desktop. It's nice like that.
+I trigger the command 'noms 1' using [GeekTool](http://projects.tynsoe.org/en/geektool/) so that I have the info displaying on my desktop.
 	
 	
 Author
