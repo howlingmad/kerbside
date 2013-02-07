@@ -81,7 +81,7 @@ if (len(sys.argv[1:]) < 2):
 		if result == 1:
 			traders = custom_strftime('%a {S}', date) + ": "
 		if result == 2:
-			json = json + '{"date":"' + custom_strftime('%a {S}', date) + '","traders":['
+			json = json + '{"date":"' + custom_strftime('%A {S}', date) + '","traders":['
 		first = True
 		for stall in day.findAll('li'):
 			heading = stall.find('h4')
