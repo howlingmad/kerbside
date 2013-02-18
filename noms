@@ -58,8 +58,8 @@ if (len(sys.argv[1:]) < 2):
 	kerb = soup.find('div', 'rota_panel')
 	kerbList = kerb.find('ul')
 
-	# how many days left in the week
-	week = {'Mon': 5, 'Tue': 4, 'Wed': 3, 'Thu': 2, 'Fri': 1}
+	# how many days left in the week (monday is 4 as there is no longer a stall on mondays)
+	week = {'Mon': 4, 'Tue': 4, 'Wed': 3, 'Thu': 2, 'Fri': 1}
 	left = 1
 	if result == 1 or result == 2:
 		for key, val in dict.items(week):
@@ -74,7 +74,8 @@ if (len(sys.argv[1:]) < 2):
 		if result == 2 and not first:
 			json = json + ','
 		if first:
-			if custom_strftime('%Y-%m-%d', now) != custom_strftime('%Y-%m-%d', date):
+			# still print if monday (no longer any stalls on a monday)
+			if custom_strftime('%Y-%m-%d', now) != custom_strftime('%Y-%m-%d', date) and now.strftime('%a') != 'Mon':
 				sys.exit()
 			first = False
 		traders = ""
@@ -106,7 +107,7 @@ if (len(sys.argv[1:]) < 2):
 		#jsondata = {+json+}
 		x = simjson.loads(json)
 
-	  	f = open("data.json","w")
+	  	f = open("/home5/arethefe/public_html/kerbside/data.json","w")
 		simjson.dump(x, f)
 		f.close()
 
