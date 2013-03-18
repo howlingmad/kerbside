@@ -14,11 +14,7 @@ How does it look
 ----------------
 Like this:
 
-![the output of kerb](https://github.com/downloads/howlingmad/kerbside/nom.png)
-
-Or like this:
-
-![the output of kerb](https://github.com/downloads/howlingmad/kerbside/noms.png)
+![the output of kerb](screenshot.png)
 	
 Simple, huh?
 
