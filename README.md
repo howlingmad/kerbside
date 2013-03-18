@@ -64,6 +64,4 @@ I trigger the command 'noms 1' using [GeekTool](http://projects.tynsoe.org/en/ge
 	
 Author
 ------
-Alex Kilgour   
--- [http://kil.gr](http://kil.gr)   
--- [@howlingmad](http://twitter.com/howlingmad)
+Alex Kilgour : [http://kil.gr](http://kil.gr)
