@@ -65,7 +65,7 @@ I trigger the command 'noms 1' using [GeekTool](http://projects.tynsoe.org/en/ge
 Website
 -------
 
-visit the [Kerbside website](http://kil.gr/kerbside/) to see a mobile friendly page built by using the JSON output.
+visit the [Kerbside website](http://kil.gr/kerbside/) to see a mobile friendly page built using the JSON output.
 	
 Author
 ------
