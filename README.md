@@ -55,12 +55,17 @@ By adding an argument of '1' you will see the stalls on each day for the rest of
 
 	$ noms 1
 
-!NEW! If you add the argument '2' then there will be no CLI output, but will instead write the data to json format.
+!NEW! If you add the argument '2' then there will be no CLI output, but will instead write the data to JSON format.
 
 	$ noms 2
 	
 I trigger the command 'noms 1' using [GeekTool](http://projects.tynsoe.org/en/geektool/) so that I have the info displaying on my desktop.
-	
+
+
+Website
+-------
+
+visit the [Kerbside website](http://kil.gr/kerbside/) to see a mobile friendly page built by using the JSON output.
 	
 Author
 ------
