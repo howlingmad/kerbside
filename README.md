@@ -70,3 +70,7 @@ visit the [Kerbside website](http://kil.gr/kerbside/) to see a mobile friendly p
 Author
 ------
 Alex Kilgour : [http://kil.gr](http://kil.gr)
+
+License
+-------
+Kerbside is licensed under the [WTFPL license.](http://sam.zoy.org/wtfpl/)
