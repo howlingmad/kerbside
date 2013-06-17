@@ -92,7 +92,7 @@ if (len(sys.argv[1:]) < 2):
 				if result == 2:
 					json = json + ',"' + name.title() + '": "' + traderLink + '"'
 		if result == 0 or result == 1:
-			print traders
+			print traders.encode('utf-8')
 		if result == 2:
 			json = json + "}]}"
 	if result == 2:
